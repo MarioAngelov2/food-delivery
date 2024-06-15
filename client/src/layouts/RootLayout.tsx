@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { ClerkProvider } from "@clerk/clerk-react";
 import Navbar from "../components/Navbar";
 
@@ -9,8 +9,14 @@ if (!PUBLISHABLE_KEY) {
 }
 
 export default function RootLayout() {
+  const navigate = useNavigate();
+
   return (
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+    <ClerkProvider
+      routerPush={(to) => navigate(to)}
+      routerReplace={(to) => navigate(to, { replace: true })}
+      publishableKey={PUBLISHABLE_KEY}
+    >
       <Navbar />
       <Outlet />
     </ClerkProvider>
