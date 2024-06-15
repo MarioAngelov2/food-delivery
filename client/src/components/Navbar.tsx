@@ -9,9 +9,7 @@ import {
   Sheet,
   SheetContent,
   SheetDescription,
-  SheetFooter,
   SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "./ui/sheet";
 import { useState } from "react";
@@ -31,9 +29,9 @@ const Navbar = () => {
     <MaxWidthWrapper>
       <nav className="flex justify-between pt-5 pb-2">
         <div>
-          <h1 className="text-[#FF823F] font-extrabold text-4xl">Foodie</h1>
+          <h1 onClick={() => navigate('/')} className="text-[#FF823F] font-extrabold text-4xl cursor-pointer">Foodie</h1>
         </div>
-        <div className="hidden lg:flex items-center justify-center gap-6">
+        <div className="items-center justify-center hidden gap-6 lg:flex">
           {links.map((link) => (
             <NavLink
               key={link.url}
@@ -46,13 +44,13 @@ const Navbar = () => {
             </NavLink>
           ))}
         </div>
-        <div className="hidden lg:flex items-center justify-center gap-8">
+        <div className="items-center justify-center hidden gap-8 lg:flex">
           <CiSearch size={26} />
           <IoBagOutline size={26} />
           <SignedOut>
             <button
               onClick={() => navigate("/sign-in")}
-              className="border px-5 py-2 rounded-xl border-[#FF823F] text-sm"
+              className="border px-5 py-2 rounded-2xl border-[#FF823F] text-sm"
             >
               Sign In
             </button>
@@ -63,7 +61,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile */}
-        <div className="lg:hidden flex items-center justify-center gap-6">
+        <div className="flex items-center justify-center gap-6 lg:hidden">
           <CiSearch size={26} />
           <IoBagOutline size={26} />
           <div>
@@ -85,7 +83,7 @@ const Navbar = () => {
             </SheetTrigger>
             <SheetContent>
               <SheetHeader></SheetHeader>
-              <SheetDescription className="flex flex-col text-2xl font-bold gap-4 text-slate-950 mt-4">
+              <SheetDescription className="flex flex-col gap-4 mt-4 text-2xl font-bold text-slate-950">
                 {links.map((link) => (
                   <NavLink
                     key={link.url}
