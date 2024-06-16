@@ -25,7 +25,7 @@ const Footer = () => {
   return (
     <div className="bg-gray-100 min-h-48">
       <MaxWidthWrapper>
-        <div className="grid grid-cols-1 gap-4 px-6 py-10 mt-4 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4 px-6 py-10 lg:grid-cols-4">
           <div className="flex flex-col gap-5">
             <h2 className="text-4xl font-black">Foodie</h2>
             <p>Find the best restaunts with the best food.</p>

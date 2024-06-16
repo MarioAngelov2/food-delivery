@@ -17,7 +17,6 @@ import { useState } from "react";
 const links = [
   { url: "/", name: "Home" },
   { url: "/menu", name: "Menu" },
-  { url: "/mobile-app", name: "Mobile App" },
   { url: "/contact", name: "Contact Us" },
 ];
 
@@ -36,7 +35,7 @@ const Navbar = () => {
             <NavLink
               key={link.url}
               className={({ isActive }) =>
-                isActive ? "text-[#FF823F]" : "text-black"
+                isActive ? "text-[#FF823F] transition duration-300 ease-in-out" : "text-black"
               }
               to={link.url}
             >
