@@ -15,7 +15,7 @@ const Home = () => {
           <div>
             <p className="text-lg text-center">How to order?</p>
             <h2 className="text-4xl font-black text-center text-[#FF823F]">
-              It is so easy.
+              It's as easy as this.
             </h2>
           </div>
           <div className="flex flex-col items-center justify-between gap-12 mt-4 lg:flex-row">
