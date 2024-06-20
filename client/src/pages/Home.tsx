@@ -95,9 +95,12 @@ const Home = () => {
             Your time.
           </h3>
           <div className="flex flex-col items-center justify-center gap-4 mt-12 lg:items-start lg:flex-row">
-            <div className="flex flex-col items-center justify-center lg:flex-1 md:w-[450px] gap-6 p-4 shadow-xl rounded-xl lg:h-[350px h-[350px] bg-white">
-              <LuBadgePercent className="text-[#FF823F]" size={48} />
-              <h4 className="text-xl font-bold">Loyalty programs</h4>
+            <div className="flex flex-col items-center justify-evenly lg:flex-1 md:w-[450px] gap-6 p-4 shadow-xl rounded-xl lg:h-[350px h-[350px] bg-white">
+              <div className="flex flex-col items-center justify-center gap-4">
+                <LuBadgePercent className="text-[#FF823F]" size={48} />
+                <h4 className="text-xl font-bold">Loyalty programs</h4>
+              </div>
+
               <div className="flex flex-col items-start w-full gap-4">
                 <p>
                   Points Program: collect points and use them for great offers
@@ -108,9 +111,11 @@ const Home = () => {
                 </p>
               </div>
             </div>
-            <div className="flex flex-col items-center justify-center lg:flex-1 md:w-[450px] gap-6 p-4 shadow-xl rounded-xl lg:h-[350px] h-[390px] bg-white">
-              <HiOutlineBadgeCheck className="text-[#FF823F]" size={48} />
-              <h4 className="text-xl font-bold">Our promise</h4>
+            <div className="flex flex-col items-center justify-evenly lg:flex-1 md:w-[450px] gap-6 p-4 shadow-xl rounded-xl lg:h-[350px] h-[300px] bg-white">
+              <div className="flex flex-col items-center justify-center gap-4">
+                <HiOutlineBadgeCheck className="text-[#FF823F]" size={48} />
+                <h4 className="text-xl font-bold">Our promise</h4>
+              </div>
               <div className="flex flex-col items-start w-full gap-4">
                 <p>Excellent service</p>
                 <p>Authentic user reviews</p>
@@ -120,9 +125,12 @@ const Home = () => {
                 </p>
               </div>
             </div>
-            <div className="flex flex-col items-center justify-center lg:flex-1 md:w-[450px] gap-6 p-4 shadow-xl rounded-xl lg:h-[350px] h-[350px] bg-white">
-              <SlStar className="text-[#FF823F]" size={40} />
-              <h4 className="text-xl font-bold">Your benefits</h4>
+            <div className="flex flex-col items-center justify-evenly lg:flex-1 md:w-[450px] gap-6 p-4 shadow-xl rounded-xl lg:h-[350px] h-[350px] bg-white">
+              <div className="flex flex-col items-center justify-center gap-4">
+                <SlStar className="text-[#FF823F]" size={40} />
+                <h4 className="text-xl font-bold">Your benefits</h4>
+              </div>
+
               <div className="flex flex-col items-start w-full gap-4">
                 <p>3000+ places to choose from</p>
                 <p>Pay online or with cash</p>
