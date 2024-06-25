@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import express from "express";
 import http from "http";
 import mongoose from "mongoose";
+import router from "./routes/index";
 
 dotenv.config();
 
@@ -20,7 +21,14 @@ mongoose
   .then(() => console.log("Connected to database"))
   .catch((err) => console.log("Error connecting to database: ", err));
 
-app.use(bodyParser.json());
+app.use((req, res, next) => {
+  if (!req.path.startsWith("/api/webhooks")) {
+    bodyParser.json()(req, res, next);
+  } else {
+    next();
+  }
+});
+app.use(router);
 
 const server = http.createServer(app);
 
