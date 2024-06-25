@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import { Schema, model } from "mongoose";
 
 const userSchema = new Schema({
@@ -7,6 +6,7 @@ const userSchema = new Schema({
   email: String,
   address: String,
   phoneNumber: String,
+  id: String,
 });
 
 export const UserModel = model("User", userSchema);
