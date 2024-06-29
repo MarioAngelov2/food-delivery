@@ -2,7 +2,12 @@ import MaxWidthWrapper from "./MaxWidthWrapper";
 import { CiSearch } from "react-icons/ci";
 import { IoBagOutline } from "react-icons/io5";
 import { NavLink, useNavigate } from "react-router-dom";
-import { SignedIn, SignedOut, UserButton } from "@clerk/clerk-react";
+import {
+  SignedIn,
+  SignedOut,
+  UserButton,
+  SignInButton,
+} from "@clerk/clerk-react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 import {
@@ -28,14 +33,21 @@ const Navbar = () => {
     <MaxWidthWrapper>
       <nav className="flex justify-between pt-5 pb-2">
         <div>
-          <h1 onClick={() => navigate('/')} className="text-[#FF823F] font-extrabold text-4xl cursor-pointer">Foodie</h1>
+          <h1
+            onClick={() => navigate("/")}
+            className="text-[#FF823F] font-extrabold text-4xl cursor-pointer"
+          >
+            Foodie
+          </h1>
         </div>
         <div className="items-center justify-center hidden gap-6 lg:flex">
           {links.map((link) => (
             <NavLink
               key={link.url}
               className={({ isActive }) =>
-                isActive ? "text-[#FF823F] transition duration-300 ease-in-out" : "text-black"
+                isActive
+                  ? "text-[#FF823F] transition duration-300 ease-in-out"
+                  : "text-black"
               }
               to={link.url}
             >
@@ -47,12 +59,7 @@ const Navbar = () => {
           <CiSearch size={26} />
           <IoBagOutline size={26} />
           <SignedOut>
-            <button
-              onClick={() => navigate("/sign-in")}
-              className="border px-5 py-2 rounded-2xl border-[#FF823F] text-sm"
-            >
-              Sign In
-            </button>
+            <SignInButton mode="modal">Sign In</SignInButton>
           </SignedOut>
           <SignedIn>
             <UserButton />
