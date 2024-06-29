@@ -17,12 +17,10 @@ export const clerkWebhook = async (req: Request, res: Response) => {
 
     const wh = new Webhook(secret);
     const evt: any = wh.verify(payloadString, svixHeaders);
-    console.log(evt);
 
     const { id, ...attributes } = evt.data;
 
     const eventType = evt.type;
-    console.log(eventType);
 
     if (eventType === "user.created") {
       console.log(`User created: ${id} is ${eventType}`);
