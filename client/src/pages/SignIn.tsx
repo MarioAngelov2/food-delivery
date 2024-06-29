@@ -4,7 +4,7 @@ import { SignIn } from "@clerk/clerk-react";
 export default function SignInPage() {
   return (
     <MaxWidthWrapper>
-      <div className="flex mx-auto w-full mt-14 justify-center lg:mt-36 h-screen">
+      <div className="flex justify-center w-full h-screen mx-auto mt-14 lg:mt-36">
       <SignIn />
       </div>
     </MaxWidthWrapper>
