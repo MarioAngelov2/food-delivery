@@ -4,7 +4,7 @@ const userSchema = new Schema({
   firstName: String,
   lastName: String,
   email: String,
-  id: String,
+  clerkUserId: String,
 });
 
 export const UserModel = model("User", userSchema);

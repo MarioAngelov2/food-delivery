@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import { Request, Response } from "express";
 import { Webhook } from "svix";
+import { UserModel } from "../models/user.model";
 
 dotenv.config();
 
@@ -23,8 +24,17 @@ export const clerkWebhook = async (req: Request, res: Response) => {
     const eventType = evt.type;
 
     if (eventType === "user.created") {
-      console.log(`User created: ${id} is ${eventType}`);
-      console.log(attributes);
+      const firstName = attributes.first_name;
+      const lastName = attributes.last_name;
+
+      const user = new UserModel({
+        clerkUserId: id,
+        firstName: firstName,
+        lastName: lastName,
+      });
+
+      await user.save();
+      console.log("User is created");
     }
 
     res.status(200).json({
