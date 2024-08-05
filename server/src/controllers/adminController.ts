@@ -4,6 +4,7 @@ import {
   getAllProductsService,
   getProductService,
   updateProductService,
+  deleteProductService,
 } from "../services/adminService";
 
 export const createProduct = async (req: Request, res: Response) => {
@@ -50,6 +51,19 @@ export const updateProduct = async (req: Request, res: Response) => {
     const result = await updateProductService(data);
 
     res.status(201).json(result);
+  } catch (error) {
+    console.error(error);
+    res.status(500);
+  }
+};
+
+export const deleteProduct = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+
+    deleteProductService(id);
+
+    res.status(200).json("Products has been deleted");
   } catch (error) {
     console.error(error);
     res.status(500);

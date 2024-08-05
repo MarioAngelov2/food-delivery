@@ -82,3 +82,14 @@ export const updateProductService = async (data: Product) => {
     throw new Error("Database update error");
   }
 };
+
+export const deleteProductService = async (id: String) => {
+  try {
+    if (!id) throw new Error("Product does not exist");
+
+    await ProductModel.findByIdAndDelete(id);
+  } catch (error) {
+    console.log(error);
+    throw new Error("Database update error");
+  }
+};
