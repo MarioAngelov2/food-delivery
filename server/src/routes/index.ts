@@ -8,6 +8,10 @@ import {
   getProduct,
   deleteProduct,
 } from "../controllers/adminController";
+import {
+  productValidationMiddleware,
+  productValidation,
+} from "../middleware/productMiddleware";
 
 const router = Router();
 
@@ -16,7 +20,11 @@ router.post(
   bodyParser.raw({ type: "application/json" }),
   clerkWebhook
 );
-router.post("/admin/create-product", createProduct);
+router.post(
+  "/admin/create-product",
+  productValidationMiddleware(productValidation),
+  createProduct
+);
 router.get("/admin/get-all-products", getAllProducts);
 router.get("/admin/get-product/:id", getProduct);
 router.put("/admin/update-product", updateProduct);
