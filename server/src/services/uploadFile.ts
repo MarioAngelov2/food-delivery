@@ -14,7 +14,7 @@ interface File {
 
 export const uploadFile = async (data: File) => {
   try {
-    const result = await new Promise((resolve, reject) => {
+    await new Promise((resolve, reject) => {
       const uploadStream = cloudinary.v2.uploader.upload_stream(
         {
           resource_type: "auto",
