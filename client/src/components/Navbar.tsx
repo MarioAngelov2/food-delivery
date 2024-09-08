@@ -14,7 +14,6 @@ import {
   Sheet,
   SheetContent,
   SheetDescription,
-  SheetHeader,
   SheetTrigger,
 } from "./ui/sheet";
 import { useState } from "react";
@@ -43,7 +42,8 @@ const Navbar = () => {
         <div className="items-center justify-center hidden gap-6 lg:flex">
           {links.map((link) => (
             <NavLink
-              key={link.url}
+              data-testid={`desktop-nav-link-${link.name.toLocaleLowerCase()}`}
+              key={`desktop-${link.url}`}
               className={({ isActive }) =>
                 isActive
                   ? "text-[#FF823F] transition duration-300 ease-in-out"
@@ -85,14 +85,14 @@ const Navbar = () => {
           </div>
           <Sheet open={openSheet} onOpenChange={setOpenSheet}>
             <SheetTrigger>
-              <RxHamburgerMenu size={26} />
+              <RxHamburgerMenu size={26} data-testid="mobile-menu" />
             </SheetTrigger>
             <SheetContent>
-              <SheetHeader></SheetHeader>
               <SheetDescription className="flex flex-col gap-4 mt-4 text-2xl font-bold text-slate-950">
                 {links.map((link) => (
                   <NavLink
-                    key={link.url}
+                    data-testid={`mobile-nav-link-${link.name.toLocaleLowerCase()}`}
+                    key={`mobile-${link.url}`}
                     to={link.url}
                     onClick={() => setOpenSheet(false)}
                   >
