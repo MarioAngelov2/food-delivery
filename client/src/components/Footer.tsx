@@ -33,7 +33,7 @@ const Footer = () => {
           <ul className="flex flex-col gap-2 justify-self-start lg:justify-self-center">
             <h1 className="mb-4 text-xl font-bold">Company</h1>
             {company.map((link) => (
-              <li key={link.url}>
+              <li key={link.title}>
                 <Link to={link.url}>{link.title}</Link>
               </li>
             ))}
@@ -41,7 +41,7 @@ const Footer = () => {
           <ul className="flex flex-col gap-2 justify-self-start lg:justify-self-center">
             <h1 className="mb-4 text-xl font-bold">Links of interest</h1>
             {linksOfInterest.map((link) => (
-              <li key={link.url}>
+              <li key={link.title}>
                 <Link to={link.url}>{link.title}</Link>
               </li>
             ))}
@@ -49,7 +49,7 @@ const Footer = () => {
           <ul className="flex flex-col gap-2 justify-self-start lg:justify-self-center">
             <h1 className="mb-4 text-xl font-bold">Follow us</h1>
             {followUsLinks.map((link) => (
-              <li key={link.url}>
+              <li key={link.title}>
                 <Link to={link.url}>{link.title}</Link>
               </li>
             ))}
