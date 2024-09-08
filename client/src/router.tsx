@@ -3,10 +3,10 @@ import RootLayout from "./layouts/RootLayout";
 import DashboardLayout from "./layouts/DashboardLayout";
 import SignInPage from "./pages/SignIn";
 import SignUpPage from "./pages/SignUp";
-import Menu from "./components/Menu";
 import ContactUs from "./pages/ContactUs";
 import Home from "./pages/Home";
 import Private from "./pages/Private";
+import Catalog from "./pages/Catalog";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       { path: "/sign-in", element: <SignInPage /> },
       { path: "/sign-up", element: <SignUpPage /> },
-      { path: "/menu", element: <Menu /> },
+      { path: "/menu", element: <Catalog /> },
       { path: "/contact", element: <ContactUs /> },
       {
         element: <DashboardLayout />,
