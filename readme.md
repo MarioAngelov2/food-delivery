@@ -6,7 +6,7 @@ This project is a **Food Delivery App**, designed to allow users to browse throu
 
 ---
 
-:space_invader: ### Features
+### :space_invader: Features
 
 - **User Authentication:** Users can register, log in, and log out securely.
 - **CRUD Operations:** Create, Read, Update, Delete functionality for managing products, orders and users.
