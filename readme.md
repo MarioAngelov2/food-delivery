@@ -3,6 +3,7 @@
 ### Introduction
 
 This project is a **Food Delivery App**, designed to allow users to browse through a variety of restaurants, select meals from their menus, and place food orders for delivery. The app offers a seamless user experience with intuitive navigation, secure payment options, and a responsive design that works well on both mobile and desktop devices. It's built to showcase full-stack development skills, including user authentication, REST API integration, and efficient data handling.
+
 ---
 
 ### Features
@@ -21,7 +22,7 @@ This project is a **Food Delivery App**, designed to allow users to browse throu
 - **Frontend:**
   - React
   - HTML5, CSS3
-  - Tailwind CSS
+  - Tailwind CSS 
   - shadcn/ui
 
 - **Backend:**
