@@ -47,7 +47,6 @@ const Home = () => {
             </div>
           </div>
         </div>
-        {/* FIRST SECTION */}
       </MaxWidthWrapper>
 
       {/* SECOND SECTION */}
