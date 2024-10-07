@@ -32,7 +32,7 @@ This project is a **Food Delivery App**, designed to allow users to browse throu
 - **Database:**
   - MongoDB with Mongoose ORM
   
-  **Testing:**
+- **Testing:**
   - Vitest
 
 - **Other Tools:**
