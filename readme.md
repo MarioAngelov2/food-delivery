@@ -17,7 +17,7 @@ This project is a **Food Delivery App**, designed to allow users to browse throu
 
 ---
 
-### Tech Stack
+### :rocket: Tech Stack
 
 - **Frontend:**
   - React
