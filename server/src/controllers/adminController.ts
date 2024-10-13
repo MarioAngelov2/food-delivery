@@ -50,7 +50,7 @@ export const updateProduct = async (req: Request, res: Response) => {
 
     const result = await updateProductService(data);
 
-    res.status(201).json(result);
+    res.status(200).json(result);
   } catch (error) {
     console.error(error);
     res.status(500);
@@ -61,9 +61,9 @@ export const deleteProduct = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
 
-    deleteProductService(id);
+    await deleteProductService(id);
 
-    res.status(200).json("Products has been deleted");
+    res.status(204).json("Products has been deleted");
   } catch (error) {
     console.error(error);
     res.status(500);
