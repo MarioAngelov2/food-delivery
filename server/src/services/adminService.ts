@@ -60,6 +60,12 @@ export const updateProductService = async (data: Product) => {
 
     const { name, description, price, image, category, id } = data;
 
+    const product = await ProductModel.findById(id);
+
+    if (!product) {
+      throw new Error("Product not found");
+    }
+
     const updatedProduct = await ProductModel.findByIdAndUpdate(
       id,
       {
@@ -85,9 +91,11 @@ export const updateProductService = async (data: Product) => {
 
 export const deleteProductService = async (id: String) => {
   try {
-    if (!id) throw new Error("Product does not exist");
+    const product = await ProductModel.findById(id);
 
-    await ProductModel.findByIdAndDelete(id);
+    if (!product) throw new Error("Product not found");
+
+    await product.deleteOne();
   } catch (error) {
     console.log(error);
     throw new Error("Database update error");
