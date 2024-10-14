@@ -16,7 +16,7 @@ export const createProduct = async (req: Request, res: Response) => {
     res.status(201).json(newProduct);
   } catch (error) {
     console.error(error);
-    res.status(500);
+    res.status(500).send("Failed to create product")
   }
 };
 
@@ -27,7 +27,7 @@ export const getAllProducts = async (req: Request, res: Response) => {
     res.status(200).json(result);
   } catch (error) {
     console.error(error);
-    res.status(500);
+    res.status(500).send("Failed to retrieve products")
   }
 };
 
@@ -40,7 +40,7 @@ export const getProduct = async (req: Request, res: Response) => {
     res.status(200).json(result);
   } catch (error) {
     console.error(error);
-    res.status(500);
+    res.status(500).send("Failed to retrieve product")
   }
 };
 
@@ -53,7 +53,7 @@ export const updateProduct = async (req: Request, res: Response) => {
     res.status(200).json(result);
   } catch (error) {
     console.error(error);
-    res.status(500);
+    res.status(500).send("Failed to update product")
   }
 };
 
@@ -66,6 +66,6 @@ export const deleteProduct = async (req: Request, res: Response) => {
     res.status(204).json();
   } catch (error) {
     console.error(error);
-    res.status(500);
+    res.status(500).send("Failed to delete product")
   }
 };
