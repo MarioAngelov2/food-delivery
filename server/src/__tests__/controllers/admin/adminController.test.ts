@@ -1,6 +1,6 @@
-import { getAllProducts } from "../../controllers/adminController";
-import { mockRequest, mockResponse } from "../../__mocks__";
-import * as adminService from "../../services/adminService";
+import { getAllProducts } from "../../../controllers/adminController";
+import { mockRequest, mockResponse } from "../../../__mocks__";
+import * as adminService from "../../../services/adminService";
 
 describe("getProducts", () => {
   it("should return a 200 status and an array of products", async () => {
