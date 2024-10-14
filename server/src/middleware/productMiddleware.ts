@@ -3,12 +3,18 @@ import Joi from "joi";
 
 type Schema = Joi.ObjectSchema;
 
-export const productValidation = Joi.object({
+export const baseProductValidation = Joi.object({
   name: Joi.string().required(),
   description: Joi.string().required(),
   price: Joi.number().required(),
   image: Joi.string().required(),
   category: Joi.string().required(),
+});
+
+export const createProductValidation = baseProductValidation;
+
+export const updateProductValidation = baseProductValidation.keys({
+  id: Joi.string().optional(),
 });
 
 export const productValidationMiddleware =
