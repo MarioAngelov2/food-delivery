@@ -10,7 +10,8 @@ import {
 } from "../controllers/adminController";
 import {
   productValidationMiddleware,
-  productValidation,
+  createProductValidation,
+  updateProductValidation,
 } from "../middleware/productMiddleware";
 
 const router = Router();
@@ -22,12 +23,16 @@ router.post(
 );
 router.post(
   "/admin/create-product",
-  productValidationMiddleware(productValidation),
+  productValidationMiddleware(createProductValidation),
   createProduct
 );
 router.get("/admin/get-all-products", getAllProducts);
 router.get("/admin/get-product/:id", getProduct);
-router.put("/admin/update-product", updateProduct);
+router.put(
+  "/admin/update-product",
+  productValidationMiddleware(updateProductValidation),
+  updateProduct
+);
 router.delete("/admin/delete-product/:id", deleteProduct);
 
 export default router;
