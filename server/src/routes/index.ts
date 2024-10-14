@@ -13,6 +13,10 @@ import {
   createProductValidation,
   updateProductValidation,
 } from "../middleware/productMiddleware";
+import {
+  queryValidationMiddleware,
+  deleteProductQueryValidation,
+} from "../middleware/deleteProductMiddleware";
 
 const router = Router();
 
@@ -33,6 +37,10 @@ router.put(
   productValidationMiddleware(updateProductValidation),
   updateProduct
 );
-router.delete("/admin/delete-product/:id", deleteProduct);
+router.delete(
+  "/admin/delete-product/:id",
+  queryValidationMiddleware(deleteProductQueryValidation),
+  deleteProduct
+);
 
 export default router;
