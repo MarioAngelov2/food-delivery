@@ -34,6 +34,7 @@ This project is a **Food Delivery App**, designed to allow users to browse throu
   
 - **Testing:**
   - Vitest
+  - Jest
 
 - **Other Tools:**
   - Postman (for API testing)
