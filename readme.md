@@ -43,5 +43,5 @@ This project is a **Food Delivery App**, designed to allow users to browse throu
 
 ### :open_file_folder: Folder Structure
 
-Here is the folder structure used in this MVP application:
+
 
