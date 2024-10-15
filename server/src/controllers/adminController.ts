@@ -16,18 +16,25 @@ export const createProduct = async (req: Request, res: Response) => {
     res.status(201).json(newProduct);
   } catch (error) {
     console.error(error);
-    res.status(500).send("Failed to create product")
+    res.status(500).send("Failed to create product");
   }
 };
 
 export const getAllProducts = async (req: Request, res: Response) => {
   try {
-    const result = await getAllProductsService();
+    const limit = req.query.limit ? Number(req.query.limit) : 10;
+    const page = req.query.page ? Number(req.query.page) : 1;
+
+    if (isNaN(limit) || isNaN(page)) {
+      return res.status(400).json({ message: "Invalid page or limit values" });
+    }
+
+    const result = await getAllProductsService(limit, page);
 
     res.status(200).json(result);
   } catch (error) {
     console.error(error);
-    res.status(500).send("Failed to retrieve products")
+    res.status(500).send("Failed to retrieve products");
   }
 };
 
@@ -40,7 +47,7 @@ export const getProduct = async (req: Request, res: Response) => {
     res.status(200).json(result);
   } catch (error) {
     console.error(error);
-    res.status(500).send("Failed to retrieve product")
+    res.status(500).send("Failed to retrieve product");
   }
 };
 
@@ -53,7 +60,7 @@ export const updateProduct = async (req: Request, res: Response) => {
     res.status(200).json(result);
   } catch (error) {
     console.error(error);
-    res.status(500).send("Failed to update product")
+    res.status(500).send("Failed to update product");
   }
 };
 
@@ -66,6 +73,6 @@ export const deleteProduct = async (req: Request, res: Response) => {
     res.status(204).json();
   } catch (error) {
     console.error(error);
-    res.status(500).send("Failed to delete product")
+    res.status(500).send("Failed to delete product");
   }
 };

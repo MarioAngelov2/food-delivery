@@ -26,11 +26,22 @@ export const createProductService = async (data: Product) => {
   }
 };
 
-export const getAllProductsService = async () => {
+export const getAllProductsService = async (limit = 10, page = 1) => {
   try {
-    const result = await ProductModel.find();
+    const totalCount = await ProductModel.countDocuments();
 
-    return result;
+    const result = await ProductModel.find()
+      .skip((page - 1) * limit)
+      .limit(limit);
+
+    const totalPages = Math.ceil(totalCount / limit);
+
+    return {
+      totalCount,
+      totalPages,
+      currentPage: page,
+      results: result,
+    };
   } catch (error) {
     console.log(error);
     throw new Error("Database update error");
