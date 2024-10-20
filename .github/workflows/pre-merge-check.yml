@@ -18,12 +18,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Change directory to server
-        working-directory: ./server
-
       # Install dependencies using npm ci (for clean install in CI environments)
       - name: Install dependencies
         run: npm ci
+        working-directory: ./server
 
       # Run tests
       - name: Run tests
