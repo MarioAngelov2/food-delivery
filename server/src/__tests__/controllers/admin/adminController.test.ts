@@ -16,7 +16,7 @@ describe("getProducts", () => {
     const req = mockRequest;
     const res = mockResponse();
 
-    await getAllProducts(req as any, res);
+    await getAllProducts(req, res);
 
     expect(res.status).toHaveBeenLastCalledWith(200);
     expect(res.json).toHaveBeenCalledWith(mockProducts);
@@ -30,7 +30,7 @@ describe("getProducts", () => {
     const req = mockRequest;
     const res = mockResponse();
 
-    await getAllProducts(req as any, res);
+    await getAllProducts(req, res);
 
     expect(res.status).toHaveBeenCalledWith(500);
     expect(res.send).toHaveBeenCalledWith("Failed to retrieve products");
