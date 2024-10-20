@@ -1,0 +1,27 @@
+name: Pre-Merge Code Check
+
+# This specifies that the workflow will run on pull request events
+on:
+  pull_request:
+    branches:
+      - main  # You can change this to your default branch (e.g., 'develop')
+
+jobs:
+  # Defining the job name (you can have multiple jobs)
+  pre-merge-check:
+    runs-on: ubuntu-latest  # Define the environment (Ubuntu is commonly used)
+    container: 
+      image: node:20  # Use Node.js version 20 container
+
+    steps:
+      # Checkout the code from the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Install dependencies using npm ci (for clean install in CI environments)
+      - name: Install dependencies
+        run: npm ci
+
+      # Run tests
+      - name: Run tests
+        run: npm test
