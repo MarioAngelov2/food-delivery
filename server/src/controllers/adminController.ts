@@ -10,8 +10,6 @@ import {
 export const createProduct = async (req: Request, res: Response) => {
   try {
     const data = req.body;
-    
-    console.log(data);
 
     const newProduct = await createProductService(data);
 
