@@ -6,8 +6,27 @@ on:
       - main 
 
 jobs:
-  pre-merge-check:
-    runs-on: ubuntu-latest 
+  # Job for the backend (server)
+  server-job:
+    runs-on: ubuntu-latest
+    container: 
+      image: node:20
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install server dependencies
+        run: npm ci
+        working-directory: ./server 
+
+      - name: Run server tests
+        run: npm test
+        working-directory: ./server
+
+  # Job for the frontend (client)
+  client-job:
+    runs-on: ubuntu-latest
     container: 
       image: node:20 
 
@@ -15,10 +34,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install dependencies
+      - name: Install client dependencies
         run: npm ci
-        working-directory: ./server
+        working-directory: ./client
 
-      - name: Run tests
+      - name: Run client tests
         run: npm test
-        working-directory: ./server
+        working-directory: ./client
