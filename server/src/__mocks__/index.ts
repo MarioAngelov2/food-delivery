@@ -1,6 +1,10 @@
 import { Request, Response } from "express";
 
-export const mockRequest = {} as Request;
+export const mockRequest = {
+  query: {},
+  params: {},
+  body: {},
+} as Request;
 
 export const mockResponse = () => {
   const res = {} as Partial<Response>;
