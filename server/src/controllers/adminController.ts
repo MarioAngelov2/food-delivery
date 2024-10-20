@@ -13,7 +13,7 @@ export const createProduct = async (req: Request, res: Response) => {
 
     const newProduct = await createProductService(data);
 
-    res.status(201).json(newProduct);
+      res.status(201).json(newProduct);
   } catch (error) {
     console.error(error);
     res.status(500).send("Failed to create product");
