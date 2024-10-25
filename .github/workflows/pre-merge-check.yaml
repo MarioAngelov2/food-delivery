@@ -41,3 +41,18 @@ jobs:
       - name: Run client tests
         run: npm test
         working-directory: ./client
+
+# Deploy backend (server)
+deploy:
+  name: Deploy
+  needs: [server-job]
+  runs-on: ubuntu-latest
+
+  steps:
+    - name: Deploy to production
+      uses: johnbeynon/render-deploy-action@v0.0.8
+      with:
+        service-id: ${{ secrets.SERVICE_ID }}
+        api-key: ${{ secrets.RENDER_API_KEY }}
+
+        https://api.render.com/deploy/?key=Q2qzgAo7VX8
