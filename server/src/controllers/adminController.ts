@@ -31,8 +31,6 @@ export const getAllProducts = async (req: Request, res: Response) => {
 
     const result = await getAllProductsService(limit, page);
 
-    console.log(result);
-
     res.status(200).json(result);
   } catch (error) {
     console.error(error);
