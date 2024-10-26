@@ -13,6 +13,8 @@ export const createProduct = async (req: Request, res: Response) => {
 
     const newProduct = await createProductService(data);
 
+    console.log(newProduct);
+
     res.status(201).json(newProduct);
   } catch (error) {
     console.error(error);
