@@ -42,7 +42,7 @@ jobs:
         run: npm test
         working-directory: ./client
         env: 
-          PUBLISHABLE_KEY: ${{ secrets.VITE_CLERK_PUBLISHABLE_KEY }}
+          VITE_CLERK_PUBLISHABLE_KEY: ${{ secrets.VITE_CLERK_PUBLISHABLE_KEY }}
 
 # Deploy backend (server)
   deploy:
