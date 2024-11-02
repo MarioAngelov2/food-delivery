@@ -39,6 +39,7 @@ This project is a **Food Delivery App**, designed to allow users to browse throu
 - **Other Tools:**
   - Postman (for API testing)
   - Git & GitHub (version control)
+  - CI/CD (GitHub Actions)
 
 ---
 
