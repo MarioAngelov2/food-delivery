@@ -1,15 +1,15 @@
 import { Request, Response } from "express";
 
-export const mockRequest = {
-  query: {},
-  params: {},
-  body: {},
-} as Request;
+export const createMockRequest = (
+  query = {},
+  params = {},
+  body = {}
+): Partial<Request> => ({ query, params, body });
 
-export const mockResponse = () => {
-  const res = {} as Partial<Response>;
-  res.status = jest.fn().mockReturnValue(res); // Make status chainable
-  res.json = jest.fn().mockReturnValue(res); // Mock json method
-  res.send = jest.fn().mockReturnValue(res); // Mock send method if needed
-  return res as Response;
+export const createMockResponse = (): Partial<Response> => {
+  const res: Partial<Response> = {};
+  res.status = jest.fn().mockReturnThis(); // Makes status chainable
+  res.json = jest.fn();
+  res.send = jest.fn();
+  return res;
 };
