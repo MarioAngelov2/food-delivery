@@ -11,10 +11,6 @@ export const createProductSchema = Joi.object({
   category: Joi.string().required(),
 });
 
-// export const updateProductSchema = baseProductSchema.keys({
-//   id: Joi.string().optional(),
-// });
-
 export const validateCreateProduct =
   (schema: Schema) => (req: Request, res: Response, next: NextFunction) => {
     const { error } = schema.validate(req.body);
