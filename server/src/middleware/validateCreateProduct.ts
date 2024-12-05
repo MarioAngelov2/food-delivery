@@ -3,7 +3,7 @@ import Joi from "joi";
 
 type Schema = Joi.ObjectSchema;
 
-export const baseProductValidation = Joi.object({
+export const createProductSchema = Joi.object({
   name: Joi.string().required(),
   description: Joi.string().required(),
   price: Joi.number().required(),
@@ -11,13 +11,11 @@ export const baseProductValidation = Joi.object({
   category: Joi.string().required(),
 });
 
-export const createProductValidation = baseProductValidation;
+// export const updateProductSchema = baseProductSchema.keys({
+//   id: Joi.string().optional(),
+// });
 
-export const updateProductValidation = baseProductValidation.keys({
-  id: Joi.string().optional(),
-});
-
-export const productValidationMiddleware =
+export const validateCreateProduct =
   (schema: Schema) => (req: Request, res: Response, next: NextFunction) => {
     const { error } = schema.validate(req.body);
     if (error) {
