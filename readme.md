@@ -30,7 +30,7 @@ This project is a **Food Delivery App**, designed to allow users to browse throu
   - Express.js
 
 - **Database:**
-  - MongoDB with Mongoose ORM
+  - MongoDB
   
 - **Testing:**
   - Vitest
