@@ -9,14 +9,21 @@ import {
   deleteProduct,
 } from "../controllers/adminController";
 import {
-  productValidationMiddleware,
-  createProductValidation,
-  updateProductValidation,
-} from "../middleware/productMiddleware";
+  createProductSchema,
+  validateCreateProduct
+} from "../middleware/validateCreateProduct";
 import {
-  queryValidationMiddleware,
-  deleteProductQueryValidation,
-} from "../middleware/deleteProductMiddleware";
+  deleteProductQuerySchema,
+  validateDeleteProductQuery,
+} from "../middleware/validateDeleteProduct";
+import {
+  getProductQuerySchema,
+  validateGetProductQuery,
+} from "../middleware/validateGetProduct";
+import {
+  updateProductSchema,
+  validateUpdateProduct
+} from '../middleware/validateUpdateProduct'
 
 const router = Router();
 
@@ -27,19 +34,23 @@ router.post(
 );
 router.post(
   "/admin/create-product",
-  productValidationMiddleware(createProductValidation),
+  validateCreateProduct(createProductSchema),
   createProduct
 );
-router.get("/admin/get-all-products", getAllProducts);
+router.get(
+  "/admin/get-all-products",
+  validateGetProductQuery(getProductQuerySchema),
+  getAllProducts
+);
 router.get("/admin/get-product/:id", getProduct);
 router.put(
   "/admin/update-product",
-  productValidationMiddleware(updateProductValidation),
+  validateUpdateProduct(updateProductSchema),
   updateProduct
 );
 router.delete(
   "/admin/delete-product/:id",
-  queryValidationMiddleware(deleteProductQueryValidation),
+  validateDeleteProductQuery(deleteProductQuerySchema),
   deleteProduct
 );
 
