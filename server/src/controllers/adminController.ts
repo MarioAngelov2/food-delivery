@@ -5,7 +5,7 @@ import {
   getProductService,
   updateProductService,
   deleteProductService,
-} from "../services/adminService";
+} from "../services";
 
 export const createProduct = async (req: Request, res: Response) => {
   try {

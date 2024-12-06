@@ -7,23 +7,17 @@ import {
   getAllProducts,
   getProduct,
   deleteProduct,
-} from "../controllers/adminController";
+} from "../controllers";
 import {
   createProductSchema,
-  validateCreateProduct
-} from "../middleware/validateCreateProduct";
-import {
-  deleteProductQuerySchema,
+  validateCreateProduct,
   validateDeleteProductQuery,
-} from "../middleware/validateDeleteProduct";
-import {
-  getProductQuerySchema,
+  deleteProductQuerySchema,
   validateGetProductQuery,
-} from "../middleware/validateGetProduct";
-import {
+  getProductQuerySchema,
+  validateUpdateProduct,
   updateProductSchema,
-  validateUpdateProduct
-} from '../middleware/validateUpdateProduct'
+} from "../middleware";
 
 const router = Router();
 
