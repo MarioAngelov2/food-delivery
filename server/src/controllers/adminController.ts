@@ -89,8 +89,9 @@ export const adminLogin = async (req: Request, res: Response) => {
     const { username, password } = req.body;
 
     if (username === ADMIN_NAME && password === ADMIN_PASSWORD) {
-      // Generate a token for the admin
+
       const token = generateToken({ role: "admin" });
+      
       res.json({ success: true, token });
     } else {
       return res
