@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import express from "express";
 import http from "http";
 import mongoose from "mongoose";
-import router from "./routes/index";
+import router from "./routes";
 
 dotenv.config();
 
