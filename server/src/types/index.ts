@@ -5,11 +5,17 @@ export type Product = {
   image: String;
   category: String;
   id?: String;
-}
+};
 
 export type User = {
   firstName: String;
   lastName: String;
   email: String;
   id: String;
-}
+};
+
+export type TokenPayload = {
+  role: String;
+  iat?: String;
+  exp?: String;
+};
