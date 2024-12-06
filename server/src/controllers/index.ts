@@ -4,6 +4,7 @@ import {
   getProduct,
   updateProduct,
   deleteProduct,
+  adminLogin
 } from "./adminController";
 
 export {
@@ -12,4 +13,5 @@ export {
   getProduct,
   updateProduct,
   deleteProduct,
+  adminLogin
 };

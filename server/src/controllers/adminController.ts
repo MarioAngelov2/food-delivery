@@ -1,3 +1,4 @@
+import dotenv from "dotenv";
 import { Request, Response } from "express";
 import {
   createProductService,
@@ -6,6 +7,12 @@ import {
   updateProductService,
   deleteProductService,
 } from "../services";
+import { generateToken } from "../utils/generateToken";
+
+dotenv.config();
+
+const ADMIN_NAME = process.env.ADMIN_NAME;
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
 export const createProduct = async (req: Request, res: Response) => {
   try {
@@ -30,8 +37,6 @@ export const getAllProducts = async (req: Request, res: Response) => {
     }
 
     const result = await getAllProductsService(limit, page);
-
-    console.log(result);
 
     res.status(200).json(result);
   } catch (error) {
@@ -76,5 +81,24 @@ export const deleteProduct = async (req: Request, res: Response) => {
   } catch (error) {
     console.error(error);
     res.status(500).send("Failed to delete product");
+  }
+};
+
+export const adminLogin = async (req: Request, res: Response) => {
+  try {
+    const { username, password } = req.body;
+
+    if (username === ADMIN_NAME && password === ADMIN_PASSWORD) {
+      // Generate a token for the admin
+      const token = generateToken({ role: "admin" });
+      res.json({ success: true, token });
+    } else {
+      return res
+        .status(403)
+        .json({ success: false, messsage: "Invalid credentials" });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Failed to login");
   }
 };
