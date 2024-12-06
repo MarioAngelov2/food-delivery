@@ -5,6 +5,7 @@ import {
   getAllProducts,
   getProduct,
   deleteProduct,
+  adminLogin,
 } from "../../controllers";
 import {
   createProductSchema,
@@ -15,30 +16,32 @@ import {
   getProductQuerySchema,
   validateUpdateProduct,
   updateProductSchema,
+  authenticateAdmin,
 } from "../../middleware";
 
 const router = Router();
 
 router.post(
-  "/admin/create-product",
+  "/create-product",
   validateCreateProduct(createProductSchema),
   createProduct
 );
 router.get(
   "/get-all-products",
-  validateGetProductQuery(getProductQuerySchema),
+  validateGetProductQuery(getProductQuerySchema), authenticateAdmin,
   getAllProducts
 );
 router.get("/admin/get-product/:id", getProduct);
 router.put(
-  "/admin/update-product",
+  "/update-product",
   validateUpdateProduct(updateProductSchema),
   updateProduct
 );
 router.delete(
-  "/admin/delete-product/:id",
+  "/delete-product/:id",
   validateDeleteProductQuery(deleteProductQuerySchema),
   deleteProduct
 );
+router.post("/login", adminLogin);
 
 export default router;

@@ -14,6 +14,7 @@ import {
   validateUpdateProduct,
   updateProductSchema,
 } from "./validateUpdateProduct";
+import { authenticateAdmin } from "./authenticateAdmin";
 
 export {
   createProductSchema,
@@ -24,4 +25,5 @@ export {
   getProductQuerySchema,
   validateUpdateProduct,
   updateProductSchema,
+  authenticateAdmin
 };
