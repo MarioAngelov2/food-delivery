@@ -7,8 +7,11 @@ import ContactUs from "./pages/ContactUs";
 import Home from "./pages/Home";
 import Private from "./pages/Private";
 import Catalog from "./pages/Catalog";
+import Login from "./pages/admin/Login";
 
 const router = createBrowserRouter([
+  { path: "/admin/login", element: <Login /> },
+
   {
     element: <RootLayout />,
     children: [
