@@ -21,7 +21,7 @@ const Login = () => {
           <div className="flex flex-col justify-center gap-2 mt-6 max-w-[400px] w-full">
             <Label>Password</Label>
             <Input
-              type="email"
+              type="password"
               placeholder="Enter password"
               className="transition-all ease-in-out"
             />
