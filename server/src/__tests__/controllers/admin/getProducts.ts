@@ -105,4 +105,13 @@ describe("getProduct Controller", () => {
     expect(res.status).toHaveBeenCalledWith(200); // Check if status 200 returned
     expect(res.json).toHaveBeenCalledWith(serviceResponse); // Check if response JSON is correct
   });
+
+  it("should return 400 if ID is invalid", async () => {
+    req.params = { id: "invalid" };
+
+    await getProduct(req as Request, res as Response);
+
+    expect(res.status).toHaveBeenCalledWith(400);
+    expect(res.json).toHaveBeenCalledWith({ message: "Invalid product ID" });
+  });
 });

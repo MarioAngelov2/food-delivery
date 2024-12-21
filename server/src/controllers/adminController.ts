@@ -46,9 +46,13 @@ export const getAllProducts = async (req: Request, res: Response) => {
 };
 
 export const getProduct = async (req: Request, res: Response) => {
-  try {
-    const { id } = req.params;
+  const { id } = req.params;
 
+  if (!id || isNaN(Number(id))) {
+    return res.status(400).json({ message: "Invalid product ID" });
+  }
+
+  try {
     const result = await getProductService(id);
 
     res.status(200).json(result);
