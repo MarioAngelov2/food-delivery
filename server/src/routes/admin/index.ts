@@ -7,39 +7,35 @@ import {
   deleteProduct,
   adminLogin,
 } from "../../controllers";
+import { authenticateAdmin, validateRequest } from "../../middleware";
 import {
   createProductSchema,
-  validateCreateProduct,
-  validateDeleteProductQuery,
-  deleteProductQuerySchema,
-  validateGetProductQuery,
   getProductQuerySchema,
-  validateUpdateProduct,
   updateProductSchema,
-  authenticateAdmin,
-} from "../../middleware";
+  idQuerySchema,
+} from "../../schemas/productSchema";
 
 const router = Router();
 
 router.post(
   "/create-product",
-  validateCreateProduct(createProductSchema),
+  validateRequest(createProductSchema, "body"),
   createProduct
 );
 router.get(
   "/get-all-products",
-  validateGetProductQuery(getProductQuerySchema), authenticateAdmin,
+  validateRequest(getProductQuerySchema),
   getAllProducts
 );
-router.get("/admin/get-product/:id", getProduct);
+router.get("/get-product/:id", getProduct);
 router.put(
   "/update-product",
-  validateUpdateProduct(updateProductSchema),
+  validateRequest(updateProductSchema),
   updateProduct
 );
 router.delete(
   "/delete-product/:id",
-  validateDeleteProductQuery(deleteProductQuerySchema),
+  validateRequest(idQuerySchema, "params"),
   deleteProduct
 );
 router.post("/login", adminLogin);
