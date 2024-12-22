@@ -48,10 +48,6 @@ export const getAllProducts = async (req: Request, res: Response) => {
 export const getProduct = async (req: Request, res: Response) => {
   const { id } = req.params;
 
-  if (!id || isNaN(Number(id))) {
-    return res.status(400).json({ message: "Invalid product ID" });
-  }
-
   try {
     const result = await getProductService(id);
 
@@ -93,9 +89,8 @@ export const adminLogin = async (req: Request, res: Response) => {
     const { username, password } = req.body;
 
     if (username === ADMIN_NAME && password === ADMIN_PASSWORD) {
-
       const token = generateToken({ role: "admin" });
-      
+
       res.json({ success: true, token });
     } else {
       return res
