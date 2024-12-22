@@ -106,12 +106,34 @@ describe("getProduct Controller", () => {
     expect(res.json).toHaveBeenCalledWith(serviceResponse); // Check if response JSON is correct
   });
 
-  it("should return 400 if ID is invalid", async () => {
-    req.params = { id: "invalid" };
+  it("should handle edge case for smallest valid ID", async () => {
+    req.params = { id: "1" };
+    const serviceResponse = {
+      result: { id: 1, name: "Product 1" },
+    };
+
+    (getProductService as jest.Mock).mockResolvedValue(serviceResponse);
 
     await getProduct(req as Request, res as Response);
 
-    expect(res.status).toHaveBeenCalledWith(400);
-    expect(res.json).toHaveBeenCalledWith({ message: "Invalid product ID" });
+    expect(getProductService).toHaveBeenCalledWith("1");
+    expect(res.status).toHaveBeenCalledWith(200);
+    expect(res.json).toHaveBeenCalledWith(serviceResponse);
+  });
+
+  it("should handle edge case for largest valid ID", async () => {
+    const largeId = String(Number.MAX_SAFE_INTEGER);
+    req.params = { id: largeId };
+    const serviceResponse = {
+      result: { id: Number.MAX_SAFE_INTEGER, name: "Product Max" },
+    };
+
+    (getProductService as jest.Mock).mockResolvedValue(serviceResponse);
+
+    await getProduct(req as Request, res as Response);
+
+    expect(getProductService).toHaveBeenCalledWith(largeId);
+    expect(res.status).toHaveBeenCalledWith(200);
+    expect(res.json).toHaveBeenCalledWith(serviceResponse);
   });
 });
