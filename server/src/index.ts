@@ -4,6 +4,7 @@ import express from "express";
 import http from "http";
 import mongoose from "mongoose";
 import router from "./routes";
+import cors from "cors";
 
 dotenv.config();
 
@@ -15,6 +16,8 @@ if (!MONGO_CONNECTION_STRING) {
 }
 
 const app = express();
+
+app.use(cors());
 
 mongoose
   .connect(MONGO_CONNECTION_STRING)
