@@ -3,12 +3,12 @@ import { create } from "zustand";
 
 const URL = "http://localhost:3000";
 
-type AdminStore = {
+type AdminLoginStore = {
   login: (username: string, password: string) => Promise<void>;
   loading: boolean;
   success: boolean;
   error: boolean;
-  data: any;
+  data: { token: string } | null;
   errorData: any;
 };
 
@@ -20,7 +20,7 @@ const initialState = {
   errorData: null,
 };
 
-export const adminLoginStore = create<AdminStore>((set, get) => ({
+export const adminLoginStore = create<AdminLoginStore>((set, get) => ({
   ...initialState,
 
   login: async (username: string, password: string) => {

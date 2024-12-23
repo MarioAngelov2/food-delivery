@@ -34,7 +34,6 @@ const Login = () => {
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col items-center justify-center"
-          action=""
         >
           <div className="flex flex-col justify-center gap-2 max-w-[400px] w-full">
             <Label>Username</Label>
