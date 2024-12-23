@@ -26,6 +26,9 @@ const Login = () => {
               className="transition-all ease-in-out"
             />
           </div>
+          <button className="w-40 h-12 mt-10 text-white uppercase transition-all ease-in-out bg-black border-2 border-black rounded-md hover:bg-white hover:text-black">
+            Login
+          </button>
         </form>
       </div>
     </MaxWidthWrapper>
