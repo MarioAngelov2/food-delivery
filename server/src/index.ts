@@ -5,6 +5,7 @@ import http from "http";
 import mongoose from "mongoose";
 import router from "./routes";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 
@@ -16,8 +17,14 @@ if (!MONGO_CONNECTION_STRING) {
 }
 
 const app = express();
+app.use(cookieParser());
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 
 mongoose
   .connect(MONGO_CONNECTION_STRING)
