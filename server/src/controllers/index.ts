@@ -4,7 +4,8 @@ import {
   getProduct,
   updateProduct,
   deleteProduct,
-  adminLogin
+  adminLogin,
+  refreshAccessToken
 } from "./adminController";
 
 export {
@@ -13,5 +14,6 @@ export {
   getProduct,
   updateProduct,
   deleteProduct,
-  adminLogin
+  adminLogin,
+  refreshAccessToken
 };
