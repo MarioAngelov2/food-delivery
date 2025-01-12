@@ -8,10 +8,19 @@ import Home from "./pages/Home";
 import Private from "./pages/Private";
 import Catalog from "./pages/Catalog";
 import Login from "./pages/admin/Login";
+import ProtectedRoutes from "./pages/admin/ProtectedRoutes";
+import Dashborad from "./pages/admin/Dashborad";
 
 const router = createBrowserRouter([
   { path: "/admin/login", element: <Login /> },
-
+  {
+    path: "/admin/dashboard",
+    element: (
+      <ProtectedRoutes>
+        <Dashborad />
+      </ProtectedRoutes>
+    ),
+  },
   {
     element: <RootLayout />,
     children: [
