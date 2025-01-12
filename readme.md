@@ -29,6 +29,9 @@ This project is a **Food Delivery App**, designed to allow users to browse throu
   - Node.js
   - Express.js
 
+- **Admin auth:**
+  - JWT
+
 - **Database:**
   - MongoDB
   
