@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { adminLoginStore } from "../../zustand/store";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 type Inputs = {
   username: string;
@@ -16,6 +17,7 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
+  const navigate = useNavigate();
 
   const getData = adminLoginStore();
 
@@ -23,6 +25,8 @@ const Login = () => {
     const { username, password } = data;
 
     getData.login(username, password);
+    navigate("/admin/dashboard");
+    console.log('redirected')
   };
 
   return (
