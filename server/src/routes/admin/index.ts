@@ -6,6 +6,7 @@ import {
   getProduct,
   deleteProduct,
   adminLogin,
+  refreshAccessToken,
 } from "../../controllers";
 import { authenticateAdmin, validateRequest } from "../../middleware";
 import {
@@ -39,5 +40,6 @@ router.delete(
   deleteProduct
 );
 router.post("/login", adminLogin);
+router.post("/refresh-token", refreshAccessToken);
 
 export default router;

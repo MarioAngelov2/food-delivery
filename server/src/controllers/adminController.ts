@@ -7,12 +7,18 @@ import {
   updateProductService,
   deleteProductService,
 } from "../services";
-import { generateToken } from "../utils/generateToken";
+import {
+  generateAccessToken,
+  generateRefreshToken,
+} from "../utils/generateToken";
+import jwt from "jsonwebtoken";
+import { TokenPayload } from "../types";
 
 dotenv.config();
 
 const ADMIN_NAME = process.env.ADMIN_NAME;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+const JWT_SECRET = process.env.JWT_SECRET;
 
 export const createProduct = async (req: Request, res: Response) => {
   try {
@@ -89,16 +95,63 @@ export const adminLogin = async (req: Request, res: Response) => {
     const { username, password } = req.body;
 
     if (username === ADMIN_NAME && password === ADMIN_PASSWORD) {
-      const token = generateToken({ role: "admin" });
+      const accessToken = generateAccessToken({ role: "admin" });
+      const refreshToken = generateRefreshToken({ role: "admin" });
 
-      res.json({ success: true, token });
+      // Set refreshToken in HttpOnly cookie
+      res.cookie("refreshToken", refreshToken, {
+        httpOnly: true,
+        secure: false, // Enable in production
+        sameSite: "lax",
+        maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+      });
+
+      // Send accessToken in JSON
+      res.json({ success: true, accessToken });
     } else {
       return res
         .status(403)
         .json({ success: false, messsage: "Invalid credentials" });
     }
   } catch (error) {
-    console.log(error);
-    res.status(500).send("Failed to login");
+    console.log("Admin login failed", error);
+    res.status(500).send("Inrernal server error");
+  }
+};
+
+export const refreshAccessToken = async (req: Request, res: Response) => {
+  const refreshToken = req.cookies.refreshToken;
+
+  if (!refreshToken) {
+    return res.status(400).json({ message: "Refresh token is required" });
+  }
+
+  if (!JWT_SECRET) {
+    throw new Error("JWT secret key not found");
+  }
+
+  try {
+    const decoded = jwt.verify(refreshToken, JWT_SECRET);
+
+    const newAccessToken = generateAccessToken(decoded);
+    const newRefreshToken = generateRefreshToken(decoded);
+
+    // Update refreshToken
+    res.cookie("refreshToken", newRefreshToken, {
+      httpOnly: true,
+      secure: false, // Enable in production
+      sameSite: "lax",
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    });
+
+    res.json({ accessToken: newAccessToken });
+  } catch (error: any) {
+    console.error("Refresh token error:", error);
+
+    if (error.name === "TokenExpiredError") {
+      return res.status(401).json({ message: "Refresh token expired" });
+    }
+
+    return res.status(403).json({ message: "Invalid token" });
   }
 };
